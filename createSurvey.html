@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create a survey</title>
+
+    <link rel="stylesheet" type="text/css" href="cssStyle.css">
+
+</head>
+
+<body>
+
+
+
+
+
+    <header>
+
+        <h1>Create a survey!</h1>
+
+        
+
+    </header>
+
+    <hr />
+
+    <div class="nav">
+
+        <a href="CreateSurvey.html">Create</a> <a href="  ">view suvey data</a> <a href="front-end.html"> Home </a> 
+     
+    </div>
+
+    <hr />
+  
+  
+  
+  	<?php
+
+
+	$servername = "50.62.209.77:3306"; 
+	$username = "ucf_test1";
+	$password = "santiago21!"; 
+	$dbname = "ucfsurveys_test1";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT qId, question, qA1, qA2, qA3, qA4, qA5, qtype FROM questions";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+   
+    while($row = $result->fetch_assoc()) {
+    echo "id: " . " " . $row["qId"]. " " . $row["question"]. " " .
+   $row["qA1"]. "  " . $row["qA2"]. " " .
+    $row["qA3"]. "  " . $row["qA4"].  " ".  $row["qA5"]. " ".  $row["qtype"]."<br>";
+    
+	} 
+} else 
+
+{
+    echo "0 results";
+    
+    
+    
+}
+
+$conn->close();
+
+	
+	if(($row["qtype"]) == 1){
+	
+		echo "dflj "; 
+	
+	}
+
+
+
+		?>
+
+
+    <hr />
+
+   
+
+
+
+
+</body>
+
+</html>
